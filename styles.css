@@ -523,20 +523,19 @@ section h2 {
 
 /* Contact Section */
 .contact {
-    padding: 100px 0;
-    background-color: var(--background-color);
+    padding: 4rem 0;
+    background-color: var(--light-gray);
     text-align: center;
-}
-
-.contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
 }
 
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
+}
+
+.contact-content p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
 }
 
 .social-links {
@@ -581,4 +580,15 @@ footer {
     .showcase-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.company-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.company-link:hover {
+    color: var(--secondary-color);
 }
