@@ -101,7 +101,7 @@ body {
 
 .hero-content {
     max-width: 800px;
-    var(--light-gray);
+    background-color: var(--light-gray);
 }
 
 .hero h1 {
