@@ -12,25 +12,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+// window.addEventListener('scroll', () => {
+//     const currentScroll = window.pageYOffset;
     
-    if (currentScroll <= 0) {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        return;
-    }
+//     if (currentScroll <= 0) {
+//         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+//         return;
+//     }
     
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scrolling down
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling up
-        navbar.style.transform = 'translateY(0)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
+//     if (currentScroll > lastScroll && currentScroll > 100) {
+//         // Scrolling down
+//         //navbar.style.transform = 'translateY(-100%)';
+//     } else {
+//         // Scrolling up
+//         navbar.style.transform = 'translateY(0)';
+//         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+//     }
     
-    lastScroll = currentScroll;
-});
+//     lastScroll = currentScroll;
+// });
 
 // Add active class to nav links on scroll
 window.addEventListener('scroll', () => {
