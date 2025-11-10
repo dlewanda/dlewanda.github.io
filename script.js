@@ -116,3 +116,43 @@ window.addEventListener('resize', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel-track');
+    if (!track) return;
+
+    // store original HTML once, so we can rebuild on resize
+    if (!track.dataset.originalHtml) track.dataset.originalHtml = track.innerHTML;
+
+    function setup() {
+        // restore original set, then duplicate it for a seamless loop
+        track.classList.remove('is-animated');
+        track.innerHTML = track.dataset.originalHtml;
+
+        const originalWidth = track.getBoundingClientRect().width || 0;
+        // duplicate content
+        track.innerHTML += track.dataset.originalHtml;
+
+        // set CSS variables used by the animation
+        track.style.setProperty('--scroll-width', `${originalWidth}px`);
+
+        // compute duration (px per second). Adjust speed as desired.
+        const speed = 50; // pixels per second — slowed to half (was 100)
+        let duration = originalWidth / speed;
+        if (duration < 8) duration = 8; // minimum duration
+        track.style.setProperty('--scroll-duration', `${duration}s`);
+
+        // reflow then start animation
+        void track.offsetWidth;
+        track.classList.add('is-animated');
+    }
+
+    setup();
+
+    // recalc on resize (debounced)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setup, 250);
+    });
+});

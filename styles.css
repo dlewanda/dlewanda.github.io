@@ -564,7 +564,7 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -586,9 +586,95 @@ footer {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 1.0s ease;
 }
 
 .company-link:hover {
     color: var(--secondary-color);
+}
+
+.company-carousel {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.company-carousel h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-logo {
+    height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.carousel-logo:hover {
+    filter: grayscale(0%);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* company carousel */
+.company-carousel {
+    margin-top: 1.5rem;
+}
+
+.carousel {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+/* logos */
+.carousel-logo {
+    height: 64px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.25s ease;
+}
+
+.carousel-logo:hover {
+    filter: grayscale(0%);
+}
+
+/* animated loop — duration comes from --scroll-duration, distance from --scroll-width */
+.carousel-track.is-animated {
+    animation: scroll var(--scroll-duration, 20s) linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-1 * var(--scroll-width)));
+    }
 }
