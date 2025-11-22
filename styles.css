@@ -656,6 +656,41 @@ footer {
 /* company carousel */
 .company-carousel {
     margin-top: 1.5rem;
+    /* Dark band behind the carousel so logos designed for dark backgrounds
+       (like the Connectify asset) remain visible in light or dark page themes. */
+    background: #535455;
+    padding: 18px 0;
+    color: #e6eef8; /* light text if any appears inside */
+}
+
+.company-carousel .carousel {
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 20px; /* create breathing room inside the dark band */
+    background: transparent;
+}
+
+/* Ensure logos display well on the dark background */
+.company-carousel .carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.company-carousel .carousel-logo {
+    height: 64px;
+    object-fit: contain;
+    filter: none; /* show original logo colors on dark band */
+    transition: filter 0.25s ease;
+}
+
+/* Keep hover behavior subtle */
+.company-carousel .carousel-logo:hover {
+    filter: brightness(1.05);
 }
 
 .carousel {
