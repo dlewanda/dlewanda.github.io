@@ -8,6 +8,8 @@
     --card-shadow: rgba(0, 0, 0, 0.1);
     --overlay-background: rgba(0, 0, 0, 0.5);
     --border-color: #e0e0e0;
+    --carousel-band-bg: #e8edf2;
+    --carousel-band-border: rgba(9, 132, 227, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +23,8 @@
         --card-shadow: rgba(0, 0, 0, 0.3);
         --overlay-background: rgba(0, 0, 0, 0.7);
         --border-color: #404040;
+        --carousel-band-bg: #2a3038;
+        --carousel-band-border: rgba(52, 152, 219, 0.15);
     }
 }
 
@@ -108,13 +112,12 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background-color: var(--light-gray);
     text-align: center;
-    padding: 0 20px;
+    padding: 5.5rem 20px 1.5rem;
 }
 
 .hero-content {
@@ -124,14 +127,14 @@ body {
 
 .hero h1 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--primary-color);
 }
 
 .hero h2 {
     font-size: 1.8rem;
     color: var(--secondary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 500;
 }
 
@@ -143,7 +146,7 @@ body {
 
 /* About Section */
 .about {
-    padding: 100px 0;
+    padding: 2.5rem 0 100px;
     background-color: var(--background-color);
 }
 
@@ -167,7 +170,7 @@ section h2 {
 
 /* Profile Photo */
 .profile-photo {
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 }
 
 .profile-image {
@@ -613,7 +616,11 @@ footer {
 
 .company-carousel {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    background: var(--carousel-band-bg);
+    border-top: 1px solid var(--carousel-band-border);
+    border-bottom: 1px solid var(--carousel-band-border);
+    padding: 12px 0;
 }
 
 .company-carousel h3 {
@@ -654,15 +661,6 @@ footer {
 }
 
 /* company carousel */
-.company-carousel {
-    margin-top: 1.5rem;
-    /* Dark band behind the carousel so logos designed for dark backgrounds
-       (like the Connectify asset) remain visible in light or dark page themes. */
-    background: #535455;
-    padding: 18px 0;
-    color: #e6eef8; /* light text if any appears inside */
-}
-
 .company-carousel .carousel {
     overflow: hidden;
     width: 100%;
@@ -684,12 +682,30 @@ footer {
 .company-carousel .carousel-logo {
     height: 64px;
     object-fit: contain;
-    filter: none; /* show original logo colors on dark band */
+    filter: grayscale(25%);
     transition: filter 0.25s ease;
 }
 
-/* Keep hover behavior subtle */
 .company-carousel .carousel-logo:hover {
+    filter: grayscale(0%);
+}
+
+.carousel-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #000;
+    padding: 12px 20px;
+    line-height: 0;
+}
+
+.company-carousel .carousel-logo-badge .carousel-logo--connectify {
+    height: 34px;
+    filter: none;
+}
+
+.company-carousel .carousel-logo-badge .carousel-logo--connectify:hover {
     filter: brightness(1.05);
 }
 
